@@ -19,7 +19,7 @@ public class WebConfig {
                         .addMapping("/tpfoyer/foyer/**")  // Allow all endpoints
                         .allowedOrigins("http://192.168.1.24:80","http://192.168.1.24:80")  // Allow all origins
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")  // Allow all HTTP methods
-                        .allowedHeaders("*")  // Allow all headers
+                        .allowedHeaders("Content-Type")   // Allow all headers
                         .allowCredentials(true);  // Allow credentials if needed
 
             }
