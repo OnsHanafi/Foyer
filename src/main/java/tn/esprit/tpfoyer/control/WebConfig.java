@@ -15,6 +15,6 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedMethods("*")  // Allow all HTTP methods
                 .allowedHeaders("*")  // Allow all headers
                 .allowedOrigins("*")  // Allow all origins
-                .allowCredentials(true);  // Allow credentials if needed
+                .allowCredentials(false);  // Allow credentials if needed
     }
 }
