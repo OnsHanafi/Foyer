@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/foyer")
-@CrossOrigin
 public class FoyerRestController {
 
     IFoyerService foyerService;
