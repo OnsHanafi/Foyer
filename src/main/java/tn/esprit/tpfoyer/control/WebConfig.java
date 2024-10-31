@@ -14,7 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addMapping("/**")  // Allow all endpoints
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")  // Allow all HTTP methods
                 .allowedHeaders("*")  // Allow all headers
-                .allowedOrigins("*")  // Allow all origins
+                .allowedOrigins("http://192.168.1.24")  // Allow all origins
                 .allowCredentials(false);  // Allow credentials if needed
     }
 }
