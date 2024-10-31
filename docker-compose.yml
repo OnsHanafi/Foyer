@@ -28,6 +28,13 @@ services:
       }'
     stdin_open: true
     tty: true
+  front-foyer:
+    depends_on:
+      - app-foyer
+    image: onshanafi/frontfoyer:1.0.0
+    restart: on-failure
+    ports:
+      - 80:80
 volumes:
   db :
 
