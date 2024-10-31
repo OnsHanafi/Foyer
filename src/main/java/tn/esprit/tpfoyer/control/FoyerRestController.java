@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/foyer")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class FoyerRestController {
 
     IFoyerService foyerService;
