@@ -16,7 +16,6 @@ public class FoyerRestController {
 
     // http://localhost:8089/tpfoyer/foyer/retrieve-all-foyers
     @GetMapping("/retrieve-all-foyers")
-    @CrossOrigin(origins = "http://192.168.1.24")
     public List<Foyer> getFoyers() {
         List<Foyer> listFoyers = foyerService.retrieveAllFoyers();
         return listFoyers;
@@ -30,7 +29,6 @@ public class FoyerRestController {
 
     // http://localhost:8089/tpfoyer/foyer/add-foyer
     @PostMapping("/add-foyer")
-    @CrossOrigin(origins = "http://192.168.1.24")
     public Foyer addFoyer(@RequestBody Foyer f) {
         Foyer foyer = foyerService.addFoyer(f);
         return foyer;
