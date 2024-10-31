@@ -12,6 +12,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app-foyer:
+    container_name: app-foyer
     depends_on:
       - mysqldb
     image: onshanafi/foyer:5.0.0
@@ -29,6 +30,7 @@ services:
     stdin_open: true
     tty: true
   front-foyer:
+    container_name: front-foyer
     depends_on:
       - app-foyer
     image: onshanafi/frontfoyer:1.0.0
