@@ -4,7 +4,7 @@ metadata:
   name: front-foyer
   namespace: dev
   annotations:
-    cert-manager.io/cluster-issuer: production
+    cert-manager.io/cluster-issuer: staging
 spec:
   ingressClassName: external-nginx
   rules:
