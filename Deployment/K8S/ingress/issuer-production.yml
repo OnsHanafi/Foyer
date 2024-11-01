@@ -1,0 +1,17 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name:  production
+  namespace: dev
+spec:
+  acme:
+    email: ons.hanafi2@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name:  production-cluster-issuer
+    solvers:
+      - selector: {}
+        http01:
+          ingress:
+            class: external-nginx

@@ -1,0 +1,14 @@
+---
+controller:
+  ingressClassResource:
+    name:  external-nginx
+  service:
+    annotations:
+      #  if you want a private ingress
+      #  service.beta.kubernetes.io/azure-load-balancer-internal: true
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+  # required for ACME
+  watchIngressWithoutClass: true
+  extraArgs:
+    ingress-class: external-nginx
+
