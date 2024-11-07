@@ -97,7 +97,7 @@
                             <goal>report</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                            <outputDirectory>${project.build.directory}/target/site/jacoco</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
