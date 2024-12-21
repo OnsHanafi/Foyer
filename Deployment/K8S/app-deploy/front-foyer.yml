@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-foyer
+  namespace: dev
+  labels:
+    app: front-foyer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-foyer
+  template:
+    metadata:
+      labels:
+        app: front-foyer
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: jenkins
+      containers:
+      - name: front-foyer
+        image: onshanafi/frontfoyer:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-foyer
+  namespace: dev
+spec:
+  selector:
+    app: front-foyer
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80       
+      # targetPort: 80 

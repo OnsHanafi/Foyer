@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-foyer
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: back-foyer
+  template:
+    metadata:
+      labels:
+        app: back-foyer
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: jenkins
+      containers:
+      - name: back-foyer
+        image: onshanafi/foyer:5.0.0
+        ports:
+        - containerPort: 8089
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/post?createDatabaseIfNotExist=true
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+        - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+          value: com.mysql.cj.jdbc.Driver
+        - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+          value: org.hibernate.dialect.MySQL8Dialect
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: update
+        imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-foyer
+  namespace: dev
+spec:
+  selector:
+    app: back-foyer
+  ports:
+    - protocol: TCP
+      port: 8089
+      targetPort: 8089
